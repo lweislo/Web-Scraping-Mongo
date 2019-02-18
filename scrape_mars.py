@@ -115,15 +115,14 @@ def mars_weather():
 
 
 def mars_facts():
-    output_dict = {}
+    output_dict={}
 # Visit the Mars Space Facts page
     try:
         facts_url = 'http://space-facts.com/mars/'
         tables = pd.read_html(facts_url)
         df = tables[0]
-        df.columns=['fact','data']
-        df.set_index('fact')
-        facts_table = df.to_html()
+        df.columns=['Fact','Value']
+        facts_table = df.to_html(index=False, header=True)
         output_dict['facts_table'] = facts_table
         return output_dict
     except AttributeError as e:

@@ -10,19 +10,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://bootswatch.com/4/spacelab/bootstrap.min.css">
   <link rel="stylesheet" href="https://bootswatch.com/4/spacelab/_variables.scss">
+    <link rel="stylesheet" href="static/style.css">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 </head>
 
 <!-- THIS IS THE CONTENT PART -->
 <body>
-  <div class="jumbotron jumbotron-fluid jumbotron-img">
+  <div class="jumbotron jumbotron-fluid jumbotron-img justify-content-top">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="text-center p-t-3 large d-flex justify-content-center">
-          Mission to Mars! </h2>
+          <h1 class="marsheader large d-flex justify-content-center">
+          Mission to Mars! </h1>
           <div class="small d-flex justify-content-center">
-          <a type="button" class="btn btn-primary" href="http://127.0.0.1:5000/scrape" target="_blank">Scrape New Data</button></a>
+          <a type="button" class="btn bg-primary" href="http://127.0.0.1:5000/scrape" target="_blank">Scrape New Data</button></a>
           </div>
         </div>
       </div>
@@ -41,27 +44,54 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-7">
-      <h3 class="d-flex justify-content-left">Latest Mars News
-      </h3>
-      <p>
-<!— INSERT MARS NEWS —>
-          </p>
-      <h3>Featured Mars Image</h3>
-      <img src="{{featured.img_url}}" />
+      <h4 class="d-flex justify-content-left">Latest Mars News
+      </h4>
+
+{% for news in news %}
+        <p><strong>{{news.headline}}</strong></p>
+         <p class='text-primary'>
+           {{news.strapline}}
+         </p>
+         <hr />
+            {% endfor %}
+      <h4>Featured Mars Image</h4>
+      <h6>{{featured.title}}</h6>
+      <img src='{{featured.img_url}}' width="500" />
     </div><!-- col -->
 <!-- the sidebar -->
     <div class="col-sm-12 col-md-5">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2>Current Weather on Mars</h2>
+            <h4>Latest Weather on Mars</h4>
             <hr />
-            <h4>{{weather.high_temp}}</h4>
+            <ul>
+              <li><strong>High Temp</strong>: {{weather.high_temp}}</li>
+              <li><strong>Low Temp</strong>: {{weather.low_temp}}
+              </li>
+              <li><strong>Pressure</strong>:
+                {{weather.pressure}}
+              </li>
+              <li><strong>Daylight</strong>:
+                {{weather.daylight}}
+              </li>
+              <li>
+                <strong>Obs. Date</strong>
+                {{weather.date}}
+              </li>
+            </ul>
+
           </div>
+          <div class="row">
           <div class="col-md-12">
-            <!--INSERT MARS TABLE-->
+            <div class="table-responsive w-100 d-block d-sm-table" id="myTable">{% autoescape false %}
+              {{facts.facts_table}}
+              {% endautoescape %}
+            </div>
+
           </div>
-        </div><!--row-->
+        </div><!--row-2-->
+        </div><!--row1-->
       </div><!--container-->
     </div><!--col-->
 
@@ -70,9 +100,9 @@
   <!-- footer -->
 
 
-<nav class="navbar navbar-expand-lg navbar-light jumbograd2">
+<nav class="navbar navbar-expand-lg navbar-light">
   <ul class="navbar-nav mr-auto">
-    <li class="navbar-nav nav-item active"><a href="https://github.com/lweislo/API-Homework" class="nav-link">Project GitHub Page</a>
+    <li class="navbar-nav nav-item active"><a href="https://github.com/lweislo/homework-12" class="nav-link">Project GitHub Page</a>
     </li>
     <li class="navbar-nav nav-item active"><a href="#top" class="nav-link">Back to top</a>
     </li>

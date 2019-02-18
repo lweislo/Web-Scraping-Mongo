@@ -25,11 +25,11 @@ def scrape():
     weather = scrape_mars.mars_weather()
     db.weather.insert_one(weather)
     print("Weather Uploaded!")
-    #Get mars facts table
+    # Get mars facts table
     facts = scrape_mars.mars_facts()
     db.facts.insert_one(facts)
     print("Facts Uploaded!")
-    #Get images of mars hemispheres
+    # Get images of mars hemispheres
     hems = scrape_mars.mars_hemispheres()
     db.images.insert_many(hems)
     print("Hemispheres Uploaded!")

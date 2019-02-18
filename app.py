@@ -14,9 +14,13 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    featured_img = mongo.db.images.find_one()
+    featured = mongo.db.featured.find_one()
     weather = mongo.db.weather.find_one()
-    return render_template("index.html", weather=weather, featured=featured_img)
+    hemispheres = list(mongo.db.images.find())
+    facts = mongo.db.facts.find_one()
+    news = list(mongo.db.news.find().limit(5))
+
+    return render_template("index.html", weather=weather, featured=featured, hemispheres=hemispheres, facts=facts, news=news)
 
 
 @app.route("/scrape")
