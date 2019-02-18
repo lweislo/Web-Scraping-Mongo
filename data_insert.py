@@ -6,19 +6,20 @@ client = pymongo.MongoClient(conn)
 # Select database
 db = client.mars_data
 #Empty the collections if they exist:
-db.news.drop()
-db.facts.drop()
-db.weather.drop()
-db.images.drop()
+# db.news.drop()
+# db.facts.drop()
+# db.weather.drop()
+# db.images.drop()
+# db.featured.drop()
 
 #Get latest mars news
-def scrape_it_all():
+def scrape():
     news = scrape_mars.mars_news()
     db.news.insert_many(news)
     print("News Uploaded!")
     #Get featured image
     mars_pic = scrape_mars.mars_image()
-    db.images.insert_one(mars_pic)
+    db.featured.insert_one(mars_pic)
     print("Feature Image Uploaded!")
     #Get latest weather from Twitter
     weather = scrape_mars.mars_weather()
