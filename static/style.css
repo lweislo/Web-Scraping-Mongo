@@ -1,30 +1,19 @@
 .jumbotron-img{
  background-image: url('mars_craters.jpg');
- background-size: cover;
- background-position: top;
+ background-size: auto;
  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
 }
-.navgrad {
-  background-image: linear-gradient(#0591c6, #a7cde2);
 }
-.jumbograd {
-  background-image: linear-gradient(#a7cde2, #fff);
+.jumbotron{
+    height: 100vh;
 }
-.jumbograd2 {
-  background-image: linear-gradient(#fff, #0591c6);
-}
-.navbar-collapse {
-  justify-content: flex-end;
-}
-#myTable { display: none;
-
+h1 {
+  color=#c5d8f7;
+  text-shadow: 0 0 2px #fff, 0 0 5px #c5d8f7;
 }
 
-.marsheader {
-    color: #fff;
-    background-color: #fff;
-    text-emphasis-color: #fff
-  }
 .img-inline {
   padding: 0.25rem;
   background-color: #fff;
@@ -32,12 +21,6 @@
   border-radius: 0.25rem;
   margin: 0.2rem;
   }
-.fa-globe {
-  margin-right: 0.5rem;
-  margin-bottom: 0.25rem;
-    background-color: #85dbfc;
-    color: #2694bf;
-}
 @mixin width {
     width: auto !important;
 }
@@ -52,10 +35,7 @@ table.table-fit thead th, table.table-fit tfoot th {
 table.table-fit tbody td, table.table-fit tfoot td {
     width: auto !important;
 }
-#dtData {font-size: 0.75rem;}
-  body {
-    margin-top: 50px;
-  }
+
 @media (max-width: 576px) {
   .jumbotron {
     margin-top: 4.825rem;
@@ -63,12 +43,3 @@ table.table-fit tbody td, table.table-fit tfoot td {
     body {
       margin-top: 20px;
     }
-.nav > li.dropdown.open {
-    position: static;
-}
-.nav > li.dropdown.open .dropdown-menu {
-    display:table; width: 100%; text-align: center; left:0; right:0;
-}
-.dropdown-menu>li {
-    display: table-cell;
-}

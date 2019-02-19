@@ -18,7 +18,7 @@ def index():
     weather = mongo.db.weather.find_one()
     hemispheres = list(mongo.db.images.find())
     facts = mongo.db.facts.find_one()
-    news = list(mongo.db.news.find().limit(5))
+    news = list(mongo.db.news.find().limit(6))
 
     return render_template("index.html", weather=weather, featured=featured, hemispheres=hemispheres, facts=facts, news=news)
 
