@@ -8,24 +8,26 @@
   <title>Mission to Mars! for the Web</title>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://bootswatch.com/4/spacelab/bootstrap.min.css">
-  <link rel="stylesheet" href="https://bootswatch.com/4/spacelab/_variables.scss">
+  <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/slate/_variables.scss">
   <link rel="stylesheet" href="static/style.css">
   <!-- <link rel="stylesheet" href="static/reset.css"> -->
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 </head>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<a class="navbar-brand" href="https://github.com/lweislo/homework-12">Project GitHub</a>
+</nav>
 <!-- THIS IS THE CONTENT PART -->
 <body>
   <div class="container-full-bg">
     <div class="jumbotron jumbotron-fluid jumbotron-img">
       <div class="container">
-          <h1 class="large d-flex justify-content-center text-primary">
+          <h1 class="large d-flex justify-content-center legend">
           Mission to Mars! </h1>
         <div class="small d-flex justify-content-center">
-          <a type="button" class="btn bg-alert" href="http://127.0.0.1:5000/scrape" target="_blank">Scrape New Data</button></a>
+          <button type="button" class="btn-primary" href="http://127.0.0.1:5000/scrape" target="_blank"><span class="text-warning">Scrape New Data</span></button>
         </div>
       </div>
     </div>
@@ -34,25 +36,32 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-7">
-        <h4>Featured Mars Image</h4>
-        <img class="img-fluid" src='{{featured.img_url}}' />
-        <p>{{featured.title}}</p>
-        <p class="small">
-          <a href="https://www.jpl.nasa.gov/">Courtesy JPL/NASA</a>
-        </p>
+        <div class="card">
+          <div class="card-body">
+        <h4 class='card-title justify-content-center'>Featured Mars Image</h4>
+          <img class="card-img-top img-fluid" src='{{featured.img_url}}' alt='{{featured.title}}'/>
+
+            <p class="card-text">{{featured.title}}</p>
+            <p class="small text-primary">
+              <em>
+                <a href="https://www.jpl.nasa.gov/">Courtesy JPL/NASA</a>
+              </em>
+            </p>
+          </div>
+        </div>
         <hr />
         <h4 class="d-flex justify-content-left">Latest Mars News
         </h4>
 <!-- Inserting News from Mongodb -->
           {% for news in news %}
-          <p><strong>{{news.headline}}</strong></p>
-          <p class='text-primary'>
+          <p class="text-warning"><strong>{{news.headline}}</strong></p>
+          <p class='text-muted'>
            {{news.strapline}}
           </p>
         <hr />
         {% endfor %}
-        <p class="small">
-          <a href="https://mars.nasa.gov/news/">Courtesy NASA</a>
+        <p class="small text-primary"><em>
+          <a href="https://mars.nasa.gov/news/">Courtesy NASA</a></em>
         </p>
     </div><!-- col -->
   <!-- the sidebar -->
@@ -77,8 +86,8 @@
                 {{weather.date}}
               </li>
             </ul>
-          <p class="small"><img class="img_fluid" height='20rem' src="/static/Twitter_Logo_Blue.png" />
-            <a href="https://twitter.com/marswxreport?lang=en">Courtesy MarsWXReport</a>
+          <p class="small text-primary"><img class="img_fluid" height='20rem' src="/static/Twitter_Logo_Blue.png" alt='Twitter'/>
+            <em><a href="https://twitter.com/marswxreport?lang=en">Courtesy MarsWXReport</a></em>
           </p>
         </div>
         </div><!--row1 Weather -->
@@ -89,8 +98,8 @@
               {{facts.facts_table}}
               {% endautoescape %}
             </div>
-            <p class="small">
-              <a href="http://space-facts.com/mars/">Courtesy Space-Facts</a>
+            <p class="small text-primary">
+              <em><a href="http://space-facts.com/mars/">Courtesy Space-Facts</a></em>
             </p>
           </div>
         </div><!--row-2 Facts -->
@@ -106,7 +115,7 @@
           {% for item in hemispheres %}
           <div class="col-md-6 card">
             <a href="{{item.img_url}}">
-              <img  class="card-img-top img-fluid img-thumbnail" src="{{item.img_url}}" /></a>
+              <img  class="card-img-top img-fluid img-thumbnail" src="{{item.img_url}}" alt='{{item.title}}'/></a>
               <div class="card-body">
                 <p class="card-text small justify-content-left">
                   {{item.title}}
@@ -114,8 +123,8 @@
               </div>
           </div>
           {% endfor %}
-          <p class="small">
-            <a href="https://astrogeology.usgs.gov/">Courtesy USGS</a>
+          <p class="small text-primary">
+            <em><a href="https://astrogeology.usgs.gov/">Courtesy USGS</a></em>
           </p>
         </div><!--row inner-->
     </div><!--col right-->
