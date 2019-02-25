@@ -9,6 +9,6 @@ In this homework, we built a web application that scrapes various websites for d
 * Scraped the USGS Astrogeology site using Splinter to get links to the high resolution images for each of Mars' hemispheres.
 * All information was inserted into a MongoDB collection and then that database was used to populate the HTML page, using Flask and PyMongo.
 
-![Screen shot full size:](full-size.png)
+![Screen shot full size:](mars.png)
 ![Screen shot mobile size:](mobile.png)
 
