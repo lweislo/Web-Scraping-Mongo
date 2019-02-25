@@ -27,7 +27,8 @@
           <h1 class="large d-flex justify-content-center legend">
           Mission to Mars! </h1>
         <div class="small d-flex justify-content-center">
-          <button type="button" class="btn-primary" href="http://127.0.0.1:5000/scrape" target="_blank"><span class="text-warning">Scrape New Data</span></button>
+
+            <a class="text-warning" class="btn-primary" href="http://127.0.0.1:5000/scrape" >Scrape New Data</a>
         </div>
       </div>
     </div>
@@ -71,21 +72,7 @@
           <div class="col-md-12">
             <h4>Latest Weather on Mars</h4>
             <hr />
-            <ul>
-              <li><strong>High Temp</strong>: {{weather.high_temp}}</li>
-              <li><strong>Low Temp</strong>: {{weather.low_temp}}
-              </li>
-              <li><strong>Pressure</strong>:
-                {{weather.pressure}}
-              </li>
-              <li><strong>Daylight</strong>:
-                {{weather.daylight}}
-              </li>
-              <li>
-                <strong>Obs. Date</strong>
-                {{weather.date}}
-              </li>
-            </ul>
+          <p>{{weather.weather}}  
           <p class="small text-primary"><img class="img_fluid" height='20rem' src="/static/Twitter_Logo_Blue.png" alt='Twitter'/>
             <em><a href="https://twitter.com/marswxreport?lang=en">Courtesy MarsWXReport</a></em>
           </p>

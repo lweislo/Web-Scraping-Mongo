@@ -83,35 +83,30 @@ def mars_image():
 
 def mars_weather():
     output_dict = {}
-    browser = init_browser()
+
 # Visit the Mars Weather Twitter page
     twitter_url = 'https://twitter.com/marswxreport?lang=en'
-    browser.visit(twitter_url)
-    html = browser.html
 
+    response = requests.get(twitter_url)
     # Scrape out some tweets
-    soup3 = BeautifulSoup(html, 'lxml')
+    soup3 = BeautifulSoup(response.text, 'lxml')
     try:
-        tweets = soup3.find_all('div', class_='js-tweet-text-container', limit=10)
-        browser.quit()
+        tweets = soup3.find_all('p', class_='js-tweet-text', limit=10)
+
     except AttributeError:
         print("Error with tweet")
-        browser.quit()
+
     # To get around potential retweets,
     # go through the top 10 tweets and find one that looks like weather
     for item in tweets:
-        if item.p.text.split(' ')[0] == 'Sol':
-            mars_weather = item.p.text.split('pic.twitter')[0]
-            mars_weather = mars_weather.split(',')
-            output_dict['date'] = mars_weather[0]
-            output_dict['high_temp'] = mars_weather[1].split('high ')[1]
-            output_dict['low_temp'] = mars_weather[2].split('low ')[1]
-            output_dict['pressure'] = mars_weather[3].split('pressure at ')[1]
-            output_dict['daylight'] = mars_weather[4].split('daylight ')[1]
-            return output_dict
-
-            # Exit the loop if one is found that looks like weather
-            break
+#         print(item.text.split(' '))
+        for i in item.text.split(' '):
+            if i == 'sol' or i == 'Sol':
+                mars_weather = item.text.split('pic.')[0]
+                output_dict['weather'] = mars_weather
+                return output_dict
+    #             # Exit the loop if one is found that looks like weather
+                break
 
 
 def mars_facts():
